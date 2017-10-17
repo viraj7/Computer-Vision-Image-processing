@@ -7,13 +7,13 @@ from collections import Counter, OrderedDict
 
 im = cv2.imread("/Users/virajj/Downloads/starfish.jpg", 0)
 res = numpy.empty(im.shape, dtype=uint8)
-hist,bins = numpy.histogram(im.flatten(),256,[0,256])
-cdf = hist.cumsum()
+hist,bins = numpy.histogram(im.flatten(),256,[0,256]) #hist gives number of pixels for every grayscale
+cdf = hist.cumsum() # get cumulative sum of hist array
 im_size = im.shape[0]*im.shape[1]
 
 for i in range(im.shape[0]):
     for j in range(im.shape[1]):
-        res[i][j] = (max(cdf[im[i][j]], 1) - 1)*255/im_size
+        res[i][j] = (max(cdf[im[i][j]], 1) - 1)*255/im_size # histogram equalization
 
 cv2.imshow("Original Image", im)
 cv2.waitKey(0)
