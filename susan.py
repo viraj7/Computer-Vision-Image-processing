@@ -9,31 +9,6 @@ import scipy.ndimage
 import time
 import scipy
 
-
-
-'''
-Susan mask is a circular mask with 37 components.   ***
-                                                   *****
-                                                  *******
-                                                  *******
-                                                  *******
-                                                   *****
-                                                    ***
-Implementing the same in a square matrix.
-The radius of the mask is 3
-susan_mask[0,0] = 0
-susan_mask[0,1] = 0
-susan_mask[0,5] = 0
-susan_mask[0,6] = 0
-susan_mask[1,0] = 0
-susan_mask[1,6] = 0
-susan_mask[5,0] = 0
-susan_mask[5,6] = 0
-susan_mask[6,0] = 0
-susan_mask[6,1] = 0
-susan_mask[6,5] = 0
-susan_mask[6,6] = 0
-'''
 def Susan_corner(I1, S1):
     mask_radius = 3
     length = 7 #2*3+1
