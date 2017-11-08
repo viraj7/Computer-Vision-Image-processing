@@ -23,14 +23,14 @@ def Susan_corner(I1, S1):
 
     for i in range(x_min, x_max):
         for j in range(y_min, y_max):
-            susan_mask[:] = I1[i-mask_radius:i+mask_radius+1,j-mask_radius:j+mask_radius+1]   #incremeting the individual index starting from the radius
+            susan_mask[:] = I1[i-mask_radius:i+mask_radius+1,j-mask_radius:j+mask_radius+1]   
             centre = mask_radius  #the nucleus position
-            intensity = susan_mask[mask_radius, mask_radius]  #the intensity of the nucleus pixel
+            intensity = susan_mask[mask_radius, mask_radius]
 
             for m in range(0,length):
                 for n in range(0,length):
                     if ((m-centre)*(m-centre)+(n-centre)*(n-centre)<=mask_radius*mask_radius):
-                        susan_mask[m][n]=math.exp(-math.pow(((susan_mask[m][n]-intensity)/27),6))#n(r0) formula as given by equation 0.5 and threshold value is found by trial and error method
+                        susan_mask[m][n]=math.exp(-math.pow(((susan_mask[m][n]-intensity)/27),6))       #
                     else:
                         susan_mask[m][n] = 0
             susan_mask[mask_radius, mask_radius] = 0
@@ -42,7 +42,7 @@ def Susan_corner(I1, S1):
     print (np.sum(R))
 
 
-    #to threshold the matrix USAN
+    
     g = maximum/2
     for i in range(x_min,x_max):
         for j in range(y_min,y_max):
@@ -65,7 +65,7 @@ def Susan_corner(I1, S1):
 
     plt.figure(2)
     plt.imshow(O, cmap = cm.gray)
-    plt.show() #showing the raw plotted corners
+    plt.show()
 Image1 = Image.open("/Users/virajj/Downloads/susan_input1.png").convert('L')
 Image2 = Image.open("/Users/virajj/Downloads/susan_input2.png").convert('L')
 I2 = np.array(Image1)
