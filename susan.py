@@ -11,12 +11,11 @@ import scipy
 
 def Susan_corner(I1, S1):
     mask_radius = 3
-    length = 7 #2*3+1
+    length = 7 
     maximum = 0
     susan_mask = np.ones((7,7))
-    #copying the image into I2
     I1[:] = I2[:]
-    R = np.zeros(S1)#stores the distances
+    R = np.zeros(S1)
     x_min = y_min = mask_radius
     x_max = S1[0] - mask_radius
     y_max = S1[1] - mask_radius
@@ -24,7 +23,7 @@ def Susan_corner(I1, S1):
     for i in range(x_min, x_max):
         for j in range(y_min, y_max):
             susan_mask[:] = I1[i-mask_radius:i+mask_radius+1,j-mask_radius:j+mask_radius+1]   
-            centre = mask_radius  #the nucleus position
+            centre = mask_radius
             intensity = susan_mask[mask_radius, mask_radius]
 
             for m in range(0,length):
